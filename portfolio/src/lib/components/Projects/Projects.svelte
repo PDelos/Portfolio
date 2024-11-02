@@ -17,13 +17,13 @@
     ];
   </script>
   
-  <section class="py-16 px-4">
-    <div class="max-w-4xl mx-auto">
-      <h2 class="text-3xl font-bold text-gray-800 mb-8">Projects</h2>
-      <div class="grid gap-6">
-        {#each projects as project}
-          <ProjectCard {...project} />
-        {/each}
-      </div>
+<section class="py-16 px-4">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="text-3xl font-bold text-gray-800 mb-8">Projects</h2>
+    <div class="grid gap-6">
+      {#each projects as project}
+        <ProjectCard {...project} />
+      {/each}
     </div>
-  </section>
+  </div>
+</section>

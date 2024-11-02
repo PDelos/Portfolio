@@ -1,1 +1,1 @@
-export { default as Interests } from './AboutCard.svelte';
+export { default as About } from './About.svelte';

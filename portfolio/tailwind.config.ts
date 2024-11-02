@@ -9,6 +9,9 @@ export default {
 			screens: {
 				lg: '1200px', // Change the value as needed
 			},
+			fontFamily: {
+                'sora': ['Sora', 'sans-serif'],
+            },
 		}
 	},
 

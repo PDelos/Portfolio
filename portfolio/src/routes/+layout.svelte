@@ -1,27 +1,34 @@
 <script lang="ts">
     import '../app.css';
 
+    import { Toolbar, ProfileCard, ContactMe } from '$lib/components';
+
     let { children } = $props();
+  
 </script>
 
 <div class="min-h-screen flex flex-col">
     <!-- Header -->
     <header class="w-full h-[100px] flex items-end justify-center py-[100px]">
-        <div class="w-[350px] h-[50px] bg-gray-300"></div>
+        <Toolbar />
     </header>
 
     <!-- Main Layout -->
-    <main class="flex flex-col lg:flex-row">
+    <main class="flex flex-col lg:flex-row flex-grow">
         <!-- Sidebar -->
-        <aside class="lg:w-[40%]">
-            <div class="flex h-full items-center justify-center px-28 py-5 lg:sticky lg:top-[50px] lg:h-auto lg:justify-end lg:px-10 lg:py-0">
-                <div class="w-full h-[500px] bg-gray-300 lg:h-[750px] lg:w-[400px]" ></div>
-            </div>
+        <aside class="flex justify-center lg:justify-end lg:w-[40%]  px-20 lg:px-8">
+            <ProfileCard />
         </aside>
 
         <!-- Content -->
-        <section class="p-20 lg:w-[700px] lg:p-0">
+        <section class="p-20 lg:w-[700px] lg:p-0 space-y-8">
             {@render children()}
+            <ContactMe/>
         </section>
     </main>
+
+    <!-- Footer -->
+    <footer class="flex justify-center py-10 items-end h-96">
+        <h2>Made using Svelte by Pol</h2>
+    </footer>
 </div>

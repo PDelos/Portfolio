@@ -1,29 +1,44 @@
+<!-- ProfileCard.svelte -->
 <script>
-    export let name = "Name";
-    export let title = "Title"; 
-  </script>
-  
-<div class="w-72 rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 p-4">
-    <div class="mx-auto mb-4 h-32 w-32 rounded-full bg-gray-200">
-        <div class="flex h-full items-center justify-center text-gray-400">
-        <svg class="h-12 w-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-        </svg>
-        </div>
-    </div>
+    import profileImage from '$lib/assets/images/foto.jpeg';
+    import Icon from '@iconify/svelte';
 
-    <div class="text-center">
-        <div class="mb-2 h-6 bg-gray-200 text-lg font-bold">
-        {name}
-        </div>
-        <div class="mb-4 h-4 text-sm text-gray-500">
-        {title}
-        </div>
+    export let name = 'Pol Santos';
+    export let description = 'A Data Scientist with a passion for ML algorithms.';
 
-        <div class="flex justify-center space-x-4">
-        {#each Array(4) as _}
-            <div class="h-8 w-8 rounded-full bg-gray-200"></div>
-        {/each}
+    const socials = [
+        {
+            icon: "akar-icons:linkedin-fill",  // Iconify icon name for LinkedIn
+            name: "LinkedIn",
+            link: "https://www.linkedin.com/in/yourprofile"
+        },
+        {
+            icon: "akar-icons:twitter-fill",    // Iconify icon name for Twitter
+            name: "Twitter",
+            link: "https://twitter.com/yourprofile"
+        },
+        {
+            icon: "akar-icons:instagram-fill",  // Iconify icon name for Instagram
+            name: "Instagram",
+            link: "https://www.instagram.com/yourprofile"
+        }
+    ];
+</script>
+
+<div class="flex items-center justify-center w-full h-[600px] bg-white rounded-3xl lg:w-[325px] lg:sticky lg:top-[8%]">
+    <div class="flex flex-col items-center h-full w-[350px] space-y-4 p-10">
+        <img src={profileImage} alt={name} class="w-full rounded-3xl" />
+        <h2 class="font-sora text-black text-4xl font-bold mb-2 text-center py-[10px]">{name}</h2>
+        
+        <div class="flex-grow"></div> <!-- This div will take up the remaining space -->
+
+        <p class="text-gray-500 text-[20px] text-center">{description}</p>
+        <div class="w-full h-[5%] flex flex-row justify-center space-x-6">
+            {#each socials as s}
+                <a href={s.link} class="flex items-center text-gray-500"> <!-- Change text-blue-500 to your desired color -->
+                    <Icon icon={s.icon} height="full" class="text-current" />
+                </a>
+            {/each}
         </div>
     </div>
 </div>
