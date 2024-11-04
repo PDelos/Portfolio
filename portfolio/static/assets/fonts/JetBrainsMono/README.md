@@ -45,5 +45,5 @@ Use `font-variation-settings` rule to controll axes of variable fonts:
 wght 400.0
 
 Available axes:
-'wght' (range from 100.0 to 800.0
+'wght' (range from 100.0 to 800.0)
 

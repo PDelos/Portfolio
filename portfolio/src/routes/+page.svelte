@@ -1,12 +1,11 @@
 <script lang="ts">
+    import { Title } from '$lib/components';
 </script>
 
 
 <!-- Header Section -->
-<div class="mb-8">
-    <h1 class="text-3xl font-bold mb-4">Welcome to Our Platform</h1>
-    <p class="text-gray-600">This is a sample page to demonstrate scrolling behavior with the fixed sidebar.</p>
-</div>
+<Title title="Recent|Projects"/>
+
 
 <!-- Cards Section -->
 {#each Array(6) as _, i}

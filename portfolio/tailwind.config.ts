@@ -10,8 +10,10 @@ export default {
 				lg: '1200px', // Change the value as needed
 			},
 			fontFamily: {
-                'sora': ['Sora', 'sans-serif'],
-            },
+				jetbrains: ['"JetBrains Mono"', 'monospace'],
+				montserrat: ['"Montserrat"', 'sans-serif'],
+				expose: ['"Expose"', 'sans-serif'], 
+			},
 		}
 	},
 
