@@ -2,9 +2,8 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-
+html,
 body {
-    background-color: #141212;
-    color: white; /* Optional: Change text color for better contrast */
+	margin: 0;
+	height: 100%;
 }
-  
