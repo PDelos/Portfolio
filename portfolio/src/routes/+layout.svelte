@@ -1,24 +1,20 @@
 <script lang="ts">
     import '../app.css';
-    import { Toolbar, ProfileCard, ContactMe } from '$lib/components';
-    import { enhance, type SubmitFunction } from '$app/forms';
-	import { page } from '$app/stores';
+    import { Navbar, ProfileCard, ContactMe, Theme } from '$lib/components';
 
     let { children } = $props();
-    // Use $theme to get the store value
-    const submitUpdateTheme: SubmitFunction = ({ action }) => {
-		const theme = action.searchParams.get('theme');
-
-		if (theme) {
-			document.documentElement.setAttribute('data-theme', theme);
-		}
-	};
 </script>
 
 <div class="min-h-screen flex flex-col">
+    <!-- Theme Toggle Container -->
+    <div class="fixed top-4 right-4 z-50">
+        <Theme />
+    </div>
+
     <!-- Header -->
     <header class="w-full h-[100px] flex items-end justify-center py-[100px]">
-        <Toolbar />
+        <Navbar />
+        
     </header>
 
     <!-- Main Layout -->
