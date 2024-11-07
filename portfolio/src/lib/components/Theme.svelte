@@ -18,5 +18,16 @@
         return Promise.resolve();
     };
 </script>
-  
+
+
+<div>
+    <form use:enhance={submitUpdateTheme}>
+        <select name="theme" id="theme">
+            {#each themes as t}
+                <option value={t}>{t}</option>
+            {/each}
+        </select>
+        <button type="submit">Update </button>
+    </form> 
+</div>
   

@@ -21,11 +21,6 @@
             icon: "akar-icons:instagram-fill",  // Iconify icon name for Instagram
             name: "Instagram",
             link: "https://www.instagram.com/yourprofile"
-        },
-        {
-            icon: "akar-icons:instagram-fill",  // Iconify icon name for Instagram
-            name: "Instagram",
-            link: "https://www.instagram.com/yourprofile"
         }
     ];
 </script>
@@ -46,7 +41,7 @@
         <div class="w-full h-[24px] flex flex-row justify-center space-x-6">
             {#each socials as s}
                 <a href={s.link} class="flex items-center text-gray-500">
-                    <Icon icon={s.icon} height="full" />?
+                    <Icon icon={s.icon} height="full" class="text-current" />
                 </a>
             {/each}
         </div>
