@@ -1,16 +1,17 @@
 <script lang="ts">
     import '../app.css';
-
-    import { Toolbar, ProfileCard, ContactMe } from '$lib/components';
+    import { Navbar, ProfileCard, ContactMe, Theme } from '$lib/components';
 
     let { children } = $props();
-  
 </script>
 
 <div class="min-h-screen flex flex-col">
     <!-- Header -->
-    <header class="w-full h-[100px] flex items-end justify-center py-[100px]">
-        <Toolbar />
+    <header class="w-full h-[100px] flex items-end justify-center py-[100px] relative">
+        <Navbar />
+        <div class="absolute top-4 right-14 z-50">
+            <Theme />
+        </div>
     </header>
 
     <!-- Main Layout -->
