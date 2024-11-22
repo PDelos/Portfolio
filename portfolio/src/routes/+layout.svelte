@@ -1,7 +1,7 @@
 <script lang="ts">
     import '../app.css';
     import { Navbar, ProfileCard, ContactMe, Theme } from '$lib/components';
-
+    import { page } from '$app/stores';
     let { children } = $props();
 </script>
 
@@ -17,15 +17,23 @@
     <!-- Main Layout -->
     <main class="flex flex-col lg:flex-row flex-grow">
         <!-- Sidebar -->
-        <aside class="flex justify-center lg:justify-end lg:w-[40%]  px-20 lg:px-8">
-            <ProfileCard />
-        </aside>
+        {#if $page.url.pathname === '/'}
+            <aside class="flex justify-center lg:justify-end lg:w-[40%]  px-20 lg:px-8">
+                <ProfileCard />
+            </aside>
 
-        <!-- Content -->
-        <section class="p-20 lg:w-[700px] lg:p-0 space-y-8">
-            {@render children()}
-            <ContactMe/>
-        </section>
+            <!-- Content -->
+            <section class="p-20 lg:w-[700px] lg:p-0">
+                {@render children()}
+                <div class="animate-on-scroll  my-10"> <ContactMe/> </div>
+            </section>
+        {:else}
+            <!-- Content -->
+            <section class="w-full p-20">
+                {@render children()}
+                <div class="animate-on-scroll my-10"> <ContactMe/> </div>
+            </section>
+        {/if}
     </main>
 
     <!-- Footer -->
