@@ -38,6 +38,12 @@
 
     <!-- Footer -->
     <footer class="flex justify-center py-10 items-end h-96">
-        <h2>Made using Svelte by Pol</h2>
+        <h2>
+            Made using
+            <a href="https://github.com/PDelos/Portfolio" 
+               class="text-primary hover:text-primary-focus" 
+               target="_blank" 
+               rel="noopener noreferrer">Svelte by Pol</a> 
+        </h2>
     </footer>
 </div>

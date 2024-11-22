@@ -1,20 +1,3 @@
 @import './assets/fonts/Expose/css/expose.css';
 @import './assets/fonts/JetBrainsMono/css/jet-brains-mono.css';
 @import './assets/fonts/Montserrat/css/montserrat.css';
-
-/* Define the animation */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-/* Initial state before animation */
-.animate-on-scroll {
-    opacity: 0;
-    transition: opacity 1s ease-out; /* Increase the duration for a slower animation */
-}
-
-/* State when element is in view */
-.animate-on-scroll.in-view {
-    animation: fadeIn 1s forwards; /* Match the animation duration with the transition duration */
-}

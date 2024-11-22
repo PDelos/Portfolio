@@ -1,52 +1,79 @@
 <script lang="ts">
     import { page } from '$app/stores';
     import { enhance } from '$app/forms';
+    import Icon from '@iconify/svelte';
     import type { SubmitFunction } from '@sveltejs/kit';
+    import { writable } from 'svelte/store';
 
-    // List of available themes
+
+    // Get current theme from document
+    let currentTheme = '';
+    if (typeof document !== 'undefined') {
+        currentTheme = document.documentElement.getAttribute('data-theme') || '';
+    }
+
     const themes = [
-        'luxury', 'retro', 'halloween'
+        { id: 'luxury', icon: 'mdi:moon-waning-crescent', label: 'Luxury' },
+        { id: 'retro', icon: 'mdi:white-balance-sunny', label: 'Retro' },
     ];
 
-    // Define the submit function to update the theme with proper typing
+    
+
     const submitUpdateTheme: SubmitFunction = async ({ action }) => {
         const theme = action.searchParams.get('theme');
-        if (theme && themes.includes(theme)) {
+        if (theme && themes.map(t => t.id).includes(theme)) {
             document.documentElement.setAttribute('data-theme', theme);
+            currentTheme = theme;
         }
         return Promise.resolve();
     };
 
-    // Reactive variable to control dropdown visibility
-    let showDropdown = false;
+    let isOpen = writable(false);
+    let dropdownRef;
 
-    // Function to toggle dropdown visibility
-    function toggleDropdown() {
-        showDropdown = !showDropdown;
+    function handleOutsideClick(event: Event) {
+        if ($isOpen && dropdownRef && !dropdownRef.contains(event.target)) {
+        isOpen.set(false);
+        }
     }
 </script>
 
-<div class="flex-none relative">
+<svelte:window onclick={handleOutsideClick} />
+
+<div bind:this={dropdownRef} class="flex-none relative">
     <button 
-        on:click={toggleDropdown} 
-        class="btn btn-base-200"
+        on:click={() => isOpen.update(open => !open)} 
+        class="btn btn-base-200 p-2 group hover:bg-base-300"
     > 
-        Theme
+        <Icon 
+            icon="mdi:palette" 
+            height="full"
+            class="text-base-content/70 group-hover:text-primary transition-colors duration-200"
+        />
     </button>
-    {#if showDropdown}
+    {#if $isOpen}
         <form 
             method="POST" 
             use:enhance={submitUpdateTheme} 
-            class="absolute mt-2 bg-base-100 border border-base-300 rounded shadow-lg"
+            class="absolute right-0 mt-2 bg-base-100 border border-base-300 rounded-lg shadow-lg w-48 z-50"
         >
-            <ul class="py-2">
-                {#each themes as theme}
+            <ul class="py-1">
+                {#each themes as {id, icon, label}}
                     <li>
                         <button 
-                            formaction="/?/setTheme&theme={theme}&redirectTo={$page.url.pathname}" 
-                            class="block px-4 py-2 text-base-content hover:bg-base-200 w-full text-left"
+                            formaction="/?/setTheme&theme={id}&redirectTo={$page.url.pathname}" 
+                            class="flex items-center gap-3 px-4 py-2 text-base-content hover:bg-base-200 w-full text-left transition-colors relative"
+                            class:font-medium={currentTheme === id}
                         >
-                            {theme}
+                            <div class="flex items-center gap-3 flex-1">
+                                <div class="w-4 h-4 rounded-full border border-base-content flex items-center justify-center">
+                                    {#if currentTheme === id}
+                                        <div class="w-2 h-2 rounded-full bg-base-content"></div>
+                                    {/if}
+                                </div>
+                                <Icon icon={icon} class="text-xl" />
+                                <span>{label}</span>
+                            </div>
                         </button>
                     </li>
                 {/each}
