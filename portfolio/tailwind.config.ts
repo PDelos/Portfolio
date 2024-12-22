@@ -20,7 +20,7 @@ export default {
 		}
 	},
 	daisyui: {
-		themes: ['luxury', 'retro', 'halloween'],
+		themes: ['luxury', 'retro'],
 	},
 
 	plugins: [typography, daisyui]

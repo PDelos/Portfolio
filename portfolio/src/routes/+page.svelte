@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Title, Card, Tools } from '$lib/components';
+    import { Title, Card, Tools, ContactMe } from '$lib/components';
     import { onMount } from 'svelte';
   
     onMount(() => {
@@ -17,7 +17,7 @@
 
 <div class="space-y-12"> 
     <div class="transform transition-all duration-700 opacity-0 data-[in-view=true]:opacity-100" data-animation>
-        <div class="mb-6">
+        <div class="mt-6 mb-2">
             <Title title="Work|Experience"/>
         </div>    
         <div class="">
@@ -41,7 +41,7 @@
     </div>
 
     <div class="transform transition-all duration-700 opacity-0 data-[in-view=true]:opacity-100" data-animation>
-        <div class="mb-6">
+        <div class="mt-6 mb-2">
             <Title title="Recent|Projects"/>
         </div>
         <div class="">
@@ -81,14 +81,14 @@
     </div>
 
     <div class="transform transition-all duration-700 opacity-0 data-[in-view=true]:opacity-100" data-animation>
-        <div class="mb-6">
+        <div class="mt-6 mb-2">
             <Title title="Design|Tools"/>
         </div>
         <Tools />
     </div>
 
     <div class="transform transition-all duration-700 opacity-0 data-[in-view=true]:opacity-100" data-animation>
-        <div class="mb-6">
+        <div class="mt-6 mb-2">
             <Title title="About|Me"/>
         </div>
         <div class="">

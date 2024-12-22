@@ -29,7 +29,7 @@
             </section>
         {:else}
             <!-- Content -->
-            <section class="w-full p-20">
+            <section class="w-full p-20 px-20 lg:px-40">
                 {@render children()}
                 <div class="animate-on-scroll my-10"> <ContactMe/> </div>
             </section>
@@ -39,11 +39,11 @@
     <!-- Footer -->
     <footer class="flex justify-center py-10 items-end h-96">
         <h2>
-            Made using
+            Made using Sveltekit,
             <a href="https://github.com/PDelos/Portfolio" 
                class="text-primary hover:text-primary-focus" 
                target="_blank" 
-               rel="noopener noreferrer">Svelte by Pol</a> 
+               rel="noopener noreferrer">look at code</a> 
         </h2>
     </footer>
 </div>

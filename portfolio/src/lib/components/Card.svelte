@@ -2,13 +2,17 @@
     import Icon from '@iconify/svelte';
 
     let { title, subtitle, description, image, date, link, icon = true} = $props();
-
     // Split the title into two separate variables and transform to uppercase
+
+    let padding = $state(0);
+    if (image) padding = 6;
+    else padding = 4;
 </script>
+
 
 <a 
   href={link} 
-  class="block rounded-lg p-6 hover:bg-base-200 transition-all duration-200 relative group"
+  class="block rounded-lg p-{padding} my-2 hover:bg-base-200 transition-all duration-200 relative group"
 >
     <!-- External link icon -->
     <div class="absolute top-5 right-5 text-primary transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">
@@ -30,16 +34,13 @@
         {/if}
 
         <!-- Text content -->
-        <div class="flex items-center">
-            <div class="space-y-2">
-                <h2 class="font-montserrat font-bold text-6xl md:text-2xl text-base-content line-clamp-2">
-                    {title}
-                </h2>
-                <p class="font-jetbrains text-primary text-s line-clamp-1">{subtitle}</p>
-                <p class="font-jetbrains text-primary text-xs line-clamp-2">{description}</p>
+        <div class="flex items-center space-y-2 flex-col">
+                <h2 class="font-montserrat w-full font-extrabold text-2xl text-base-content text-start">{title}</h2>
+                <p class="font-jetbrains w-full text-primary text-s">{subtitle}</p>
+                <p class="font-jetbrains  w-full text-primary text-xs">{description}</p>
+                <div class="flex-grow"></div>
                 <!-- Date -->
-                <p class="font-jetbrains text-primary text-xs mt-auto pt-2">{date}</p>
-            </div>
+                <p class="font-jetbrains text-primary text-xs p-2">{date}</p>
         </div>
     </div>
 </a>
